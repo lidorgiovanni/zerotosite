@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 
 const WHATSAPP = "972543495645";
@@ -16,22 +17,38 @@ interface HeroProps {
   };
 }
 
+const wordsHe = ["מושלם", "מהיר", "מרשים", "מקצועי"];
+const wordsEn = ["Perfect", "Fast", "Stunning", "Professional"];
+
 export default function Hero({ lang, t }: HeroProps) {
   const isRtl = lang === "he";
   const Arrow = isRtl ? ArrowLeft : ArrowRight;
+  const words = isRtl ? wordsHe : wordsEn;
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((i) => (i + 1) % words.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [words.length]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-sky-950">
-      {/* background blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl" />
+      {/* blobs */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-violet-500/5 rounded-full blur-3xl" />
 
-      <div className={`relative z-10 max-w-4xl mx-auto px-6 text-center ${isRtl ? "rtl" : "ltr"}`}>
+      {/* grid overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
+
+      <div className={`relative z-10 max-w-5xl mx-auto px-6 text-center ${isRtl ? "rtl" : "ltr"}`}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium px-4 py-2 rounded-full mb-6"
+          className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium px-4 py-2 rounded-full mb-8"
         >
           <Sparkles size={14} />
           {t.badge}
@@ -44,8 +61,19 @@ export default function Hero({ lang, t }: HeroProps) {
           className="text-5xl md:text-7xl font-black text-white leading-tight mb-6"
         >
           {t.title}{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">
-            {t.titleHighlight}
+          <span className="relative inline-block">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={wordIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500 inline-block"
+              >
+                {words[wordIndex]}
+              </motion.span>
+            </AnimatePresence>
           </span>
         </motion.h1>
 
@@ -53,7 +81,7 @@ export default function Hero({ lang, t }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10"
+          className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           {t.subtitle}
         </motion.p>
@@ -68,25 +96,24 @@ export default function Hero({ lang, t }: HeroProps) {
             href={`https://wa.me/${WHATSAPP}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 text-white font-bold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 shadow-lg shadow-sky-500/25"
+            className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 text-white font-bold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 shadow-xl shadow-sky-500/30"
           >
             {t.cta}
             <Arrow size={20} />
           </a>
           <a
             href="#portfolio"
-            className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all"
+            className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all"
           >
             {t.ctaSecondary}
           </a>
         </motion.div>
 
-        {/* stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto"
+          className="mt-20 grid grid-cols-3 gap-8 max-w-md mx-auto"
         >
           {[
             { num: "50+", label: isRtl ? "פרויקטים" : "Projects" },
@@ -99,6 +126,13 @@ export default function Hero({ lang, t }: HeroProps) {
             </div>
           ))}
         </motion.div>
+      </div>
+
+      {/* wave bottom */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 80L60 69.3C120 58.7 240 37.3 360 32C480 26.7 600 37.3 720 42.7C840 48 960 48 1080 42.7C1200 37.3 1320 26.7 1380 21.3L1440 16V80H1380C1320 80 1200 80 1080 80C960 80 840 80 720 80C600 80 480 80 360 80C240 80 120 80 60 80H0Z" fill="white"/>
+        </svg>
       </div>
     </section>
   );
