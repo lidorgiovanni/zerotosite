@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 
 const WHATSAPP = "972543495645";
 
@@ -48,7 +48,14 @@ export default function Navbar({ lang, t, onLangChange }: NavbarProps) {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-4">
+          <a
+            href="tel:+972543495645"
+            className={`flex items-center gap-1.5 text-sm font-semibold transition-colors hover:text-sky-400 ${scrolled ? "text-slate-600" : "text-white/80"}`}
+          >
+            <Phone size={14} />
+            054-349-5645
+          </a>
           <button
             onClick={() => onLangChange(lang === "he" ? "en" : "he")}
             className={`text-sm font-semibold transition-colors hover:text-sky-400 ${scrolled ? "text-slate-500" : "text-white/70"}`}

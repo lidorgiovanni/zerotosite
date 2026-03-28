@@ -8,6 +8,7 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import he from "@/messages/he.json";
 import en from "@/messages/en.json";
 
@@ -27,6 +28,7 @@ export default function Home() {
       <Testimonials lang={lang} />
       <Pricing lang={lang} t={t.pricing} />
       <Contact lang={lang} t={t.contact} />
+      <WhatsAppButton lang={lang} />
       <footer className="bg-slate-950 text-slate-500 text-center text-sm py-8">
         <div className="mb-2 text-xl font-black text-white">
           Zero<span className="text-sky-400">To</span>Site
