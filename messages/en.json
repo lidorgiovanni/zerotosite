@@ -1,67 +1,67 @@
 {
   "nav": {
     "services": "Services",
-    "portfolio": "Portfolio",
+    "portfolio": "Work",
     "pricing": "Pricing",
-    "contact": "Contact"
+    "contact": "Let's Talk"
   },
   "hero": {
-    "badge": "Professional Web Development",
-    "title": "From Zero to a",
-    "titleHighlight": "Perfect Website",
-    "subtitle": "We build modern, fast, and stunning websites that bring real customers to your business",
-    "cta": "Let's Talk",
-    "ctaSecondary": "View Our Work"
+    "badge": "✦ Available for new projects",
+    "title": "Your website should",
+    "titleHighlight": "make money",
+    "subtitle": "I build websites that bring customers — not just look pretty. Delivered in 7 days, fair price, real results.",
+    "cta": "Get a Free Quote",
+    "ctaSecondary": "See My Work"
   },
   "services": {
-    "title": "What We Offer",
-    "subtitle": "Complete digital solutions for your business",
+    "title": "What I Build",
+    "subtitle": "Everything your business needs to win online",
     "items": [
-      { "title": "Website Development", "desc": "Professional and modern websites that represent your business in the best possible way" },
-      { "title": "Online Stores", "desc": "Advanced e-commerce platforms with inventory management, payments and shipping" },
-      { "title": "Landing Pages", "desc": "Conversion-focused pages that turn visitors into paying customers" },
-      { "title": "Logo & Branding", "desc": "A strong visual identity that sets you apart from the competition" },
-      { "title": "SEO & Organic Growth", "desc": "Rank at the top of Google results and get more organic customers" },
-      { "title": "Monthly Maintenance", "desc": "Full peace of mind - we handle all updates and security" },
-      { "title": "Social Media Management", "desc": "Professional and consistent content that builds community and increases exposure" },
-      { "title": "Web Applications", "desc": "Custom solutions tailored to the unique needs of your business" }
+      { "title": "Business Websites", "desc": "A professional site that represents you 24/7 and brings new clients even while you sleep" },
+      { "title": "Online Stores", "desc": "A store that sells — with payments, inventory, and shipping. Ready to work from day one" },
+      { "title": "Landing Pages", "desc": "One page that converts visitors into customers. Optimized for paid ads and campaigns" },
+      { "title": "Design & Branding", "desc": "Logo, colors, fonts — a visual identity people remember and recognize" },
+      { "title": "SEO & Google", "desc": "Appear first on Google when people search for what you sell. Free organic traffic" },
+      { "title": "Maintenance", "desc": "You focus on your business, I handle everything else — updates, security, backups" },
+      { "title": "Social Media", "desc": "Content that attracts, engages and brings customers from Instagram and Facebook to your site" },
+      { "title": "Web Apps", "desc": "Custom digital solution for any business need — from idea to production" }
     ]
   },
   "pricing": {
-    "title": "Transparent Pricing",
-    "subtitle": "No surprises, no hidden costs",
-    "popular": "Most Popular",
-    "cta": "Get Started",
+    "title": "Clear Pricing",
+    "subtitle": "No surprises. No hidden costs. What you see is what you pay.",
+    "popular": "⚡ Most Popular",
+    "cta": "Let's Talk",
     "plans": [
       {
         "name": "Landing Page",
         "price": "800",
-        "desc": "Perfect for launching a product or campaign",
-        "features": ["Custom design", "Mobile responsive", "Contact form", "High loading speed"]
+        "desc": "Perfect for paid campaigns or product launches",
+        "features": ["Custom design", "Fully responsive", "Form / WhatsApp integration", "Fast loading (Core Web Vitals)", "Delivered in 3 days"]
       },
       {
         "name": "Business Website",
         "price": "2,500",
-        "desc": "The perfect solution for small-medium businesses",
-        "features": ["Up to 8 pages", "Custom design", "Basic SEO", "Mobile responsive", "Social media integration", "30-day support"]
+        "desc": "The perfect solution for businesses that want to grow",
+        "features": ["Up to 8 pages", "Premium custom design", "Basic SEO + meta tags", "Fully responsive", "Social media integration", "30-day support", "Delivered in 7 days"]
       },
       {
         "name": "Online Store",
         "price": "5,000",
-        "desc": "A complete and advanced sales platform",
-        "features": ["Unlimited products", "Secure payment gateway", "Inventory management", "Advanced dashboard", "Full SEO", "60-day support"]
+        "desc": "A complete store that sells from day one",
+        "features": ["Unlimited products", "Secure payment gateway", "Inventory & shipping management", "Full dashboard", "Full SEO", "60-day support", "Personal training"]
       }
     ]
   },
   "contact": {
     "title": "Let's Talk",
-    "subtitle": "Have a project in mind? We're here to help",
-    "whatsapp": "Send a WhatsApp Message",
-    "or": "or",
-    "name": "Full Name",
-    "email": "Email",
-    "message": "Tell us about your project",
-    "send": "Send Message"
+    "subtitle": "Send a message and I'll get back to you within an hour — no commitment, no pressure",
+    "whatsapp": "💬 Send a WhatsApp Message",
+    "or": "or fill in your details",
+    "name": "Your name",
+    "email": "Email (optional)",
+    "message": "Tell me about your project — what do you need?",
+    "send": "Send — I'll reply within an hour"
   },
   "footer": {
     "rights": "All rights reserved"

@@ -12,10 +12,21 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import he from "@/messages/he.json";
 import en from "@/messages/en.json";
 import { motion } from "framer-motion";
-import { MessageCircle, Phone, Mail, Globe, ArrowLeft, ArrowRight } from "lucide-react";
+import { MessageCircle, Phone, Mail, Globe, ArrowLeft, ArrowRight, Star, Shield, Zap, Clock } from "lucide-react";
 
 const WHATSAPP = "972543495645";
 type Lang = "he" | "en";
+
+const marqueeItems = [
+  { icon: Star, text: "5.0 דירוג ממוצע" },
+  { icon: Zap, text: "מסירה תוך 7 ימים" },
+  { icon: Shield, text: "100% שביעות רצון" },
+  { icon: Clock, text: "תמיכה 24/7" },
+  { icon: Star, text: "50+ פרויקטים" },
+  { icon: Zap, text: "ללא תשלום מראש" },
+  { icon: Shield, text: "קוד נקי ומהיר" },
+  { icon: Clock, text: "מענה תוך שעה" },
+];
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("he");
@@ -27,6 +38,23 @@ export default function Home() {
     <main dir={isRtl ? "rtl" : "ltr"}>
       <Navbar lang={lang} t={t.nav} onLangChange={setLang} />
       <Hero lang={lang} t={t.hero} />
+
+      {/* ── MARQUEE TRUST BAR ── */}
+      <div className="bg-slate-900 border-y border-white/6 py-4 overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap gap-0">
+          {[...marqueeItems, ...marqueeItems].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <span key={i} className="inline-flex items-center gap-2 text-slate-400 text-sm font-medium px-8">
+                <Icon size={14} className="text-sky-400 flex-shrink-0" />
+                {item.text}
+                <span className="text-white/10 mx-4">|</span>
+              </span>
+            );
+          })}
+        </div>
+      </div>
+
       <Services lang={lang} t={t.services} />
       <Process lang={lang} />
       <Portfolio lang={lang} />
@@ -37,12 +65,9 @@ export default function Home() {
 
       {/* ── FINAL CTA ── */}
       <section className={`relative bg-[#030712] py-32 overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
-        {/* big glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(14,165,233,0.18),transparent)]" />
-        <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px)", backgroundSize: "28px 28px" }} />
-
-        {/* spinning rings */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-[0.04] animate-spin-slow pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(14,165,233,0.15),transparent)]" />
+        <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px)", backgroundSize: "28px 28px" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.04] animate-spin-slow pointer-events-none">
           <div className="w-full h-full rounded-full border-2 border-dashed border-sky-400" />
         </div>
 
@@ -50,7 +75,7 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-semibold px-4 py-2 rounded-full mb-8">
             <span className="w-2 h-2 bg-sky-400 rounded-full animate-pulse" />
-            {isRtl ? "זמינים עכשיו" : "Available Now"}
+            {isRtl ? "זמין לפרויקטים חדשים" : "Available for new projects"}
           </motion.div>
 
           <motion.h2 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -64,7 +89,9 @@ export default function Home() {
 
           <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
             className="text-slate-400 text-xl mb-12 leading-relaxed">
-            {isRtl ? "שיחת ייעוץ חינמית ללא התחייבות — בואו נבנה משהו מדהים ביחד" : "Free consultation, no commitment — let's build something amazing together"}
+            {isRtl
+              ? "שיחת ייעוץ חינמית ב-15 דקות — אני אגיד לך בדיוק מה האתר שלך צריך"
+              : "Free 15-min consultation — I'll tell you exactly what your site needs"}
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
@@ -80,23 +107,31 @@ export default function Home() {
               054-349-5645
             </a>
           </motion.div>
+
+          {/* mini trust */}
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-6 mt-12 text-slate-600 text-sm">
+            {(isRtl
+              ? ["✓ ללא התחייבות", "✓ מענה תוך שעה", "✓ הצעת מחיר חינמית"]
+              : ["✓ No commitment", "✓ Reply within 1 hour", "✓ Free quote"]
+            ).map(item => <span key={item}>{item}</span>)}
+          </motion.div>
         </div>
       </section>
 
       {/* ── FOOTER ── */}
       <footer className={`bg-[#020817] ${isRtl ? "rtl" : "ltr"}`}>
-        {/* gradient top border */}
-        <div className="h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent" />
-
+        <div className="h-px bg-gradient-to-r from-transparent via-sky-500/40 to-transparent" />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-            {/* brand */}
             <div>
               <div className="text-2xl font-black text-white mb-3">
                 Zero<span className="text-sky-400">To</span>Site
               </div>
               <p className="text-sm leading-relaxed text-slate-500 max-w-xs mb-6">
-                {isRtl ? "בונים אתרים מודרניים שמביאים לקוחות אמיתיים לעסק שלך." : "Building modern websites that bring real customers to your business."}
+                {isRtl
+                  ? "בונה אתרים שמביאים לקוחות אמיתיים. לא רק נראים יפה."
+                  : "Building websites that bring real customers. Not just look pretty."}
               </p>
               <div className="flex gap-2">
                 {[{ icon: Globe, href: "#" }, { icon: Phone, href: "tel:+972543495645" }, { icon: Mail, href: "mailto:lidor@zerotosite.co.il" }].map(({ icon: Icon, href }, i) => (
@@ -107,9 +142,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* links */}
             <div>
-              <h4 className="text-white font-bold mb-5 text-sm">{isRtl ? "ניווט מהיר" : "Quick Links"}</h4>
+              <h4 className="text-white font-bold mb-5 text-sm">{isRtl ? "ניווט" : "Navigation"}</h4>
               <ul className="space-y-3">
                 {[
                   { label: t.nav.services, href: "#services" },
@@ -119,7 +153,7 @@ export default function Home() {
                 ].map(l => (
                   <li key={l.href}>
                     <a href={l.href} className="text-sm text-slate-500 hover:text-sky-400 transition-colors flex items-center gap-1.5 group">
-                      <Arrow size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-sky-400" />
+                      <Arrow size={11} className="opacity-0 group-hover:opacity-100 transition-opacity text-sky-400" />
                       {l.label}
                     </a>
                   </li>
@@ -127,18 +161,19 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* contact */}
             <div>
               <h4 className="text-white font-bold mb-5 text-sm">{isRtl ? "יצירת קשר" : "Contact"}</h4>
               <ul className="space-y-3">
                 {[
-                  { icon: Phone, val: "054-349-5645" },
-                  { icon: Mail, val: "lidor@zerotosite.co.il" },
-                  { icon: MessageCircle, val: "WhatsApp" },
-                ].map(({ icon: Icon, val }) => (
-                  <li key={val} className="flex items-center gap-2.5 text-sm text-slate-500">
-                    <Icon size={13} className="text-sky-400 flex-shrink-0" />
-                    {val}
+                  { icon: Phone, val: "054-349-5645", href: "tel:+972543495645" },
+                  { icon: Mail, val: "lidor@zerotosite.co.il", href: "mailto:lidor@zerotosite.co.il" },
+                  { icon: MessageCircle, val: "WhatsApp", href: `https://wa.me/${WHATSAPP}` },
+                ].map(({ icon: Icon, val, href }) => (
+                  <li key={val}>
+                    <a href={href} className="flex items-center gap-2.5 text-sm text-slate-500 hover:text-sky-400 transition-colors">
+                      <Icon size={13} className="text-sky-400 flex-shrink-0" />
+                      {val}
+                    </a>
                   </li>
                 ))}
               </ul>
