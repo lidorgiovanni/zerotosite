@@ -118,7 +118,7 @@ export default function Services({ lang, t }: ServicesProps) {
         </div>
       </div>
 
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#f8faff] to-transparent pointer-events-none" />
     </section>
   );
 }
