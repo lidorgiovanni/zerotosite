@@ -12,6 +12,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import he from "@/messages/he.json";
 import en from "@/messages/en.json";
 import About from "@/components/About";
+import Results from "@/components/Results";
 import FAQ from "@/components/FAQ";
 import { motion } from "framer-motion";
 import { MessageCircle, Phone, Mail, Globe, ArrowLeft, ArrowRight, Star, Shield, Zap, Clock, CheckCircle } from "lucide-react";
@@ -70,6 +71,7 @@ export default function Home() {
       </div>
 
       <Services lang={lang} t={t.services} />
+      <Results lang={lang} />
       <Process lang={lang} />
       <Portfolio lang={lang} />
       <About lang={lang} />
