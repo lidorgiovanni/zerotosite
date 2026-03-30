@@ -35,23 +35,43 @@ export default function Home() {
       <WhatsAppButton lang={lang} />
 
       {/* CTA strip */}
-      <section className="bg-gradient-to-r from-sky-600 to-blue-700 py-16">
-        <div className={`max-w-4xl mx-auto px-6 text-center ${isRtl ? "rtl" : "ltr"}`}>
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-            {isRtl ? "מוכן להתחיל?" : "Ready to Start?"}
+      <section className="relative bg-[#020817] py-28 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,165,233,0.15)_0%,transparent_70%)]" />
+        <div className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.06) 1px, transparent 1px)",
+            backgroundSize: "32px 32px"
+          }}
+        />
+        <div className={`relative max-w-3xl mx-auto px-6 text-center ${isRtl ? "rtl" : "ltr"}`}>
+          <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <span className="w-2 h-2 bg-sky-400 rounded-full animate-pulse" />
+            {isRtl ? "זמינים עכשיו" : "Available Now"}
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+            {isRtl ? "מוכן לאתר שמביא לקוחות?" : "Ready for a site that converts?"}
           </h2>
-          <p className="text-sky-100 text-lg mb-8">
+          <p className="text-slate-400 text-xl mb-10">
             {isRtl ? "שיחת ייעוץ חינמית ללא התחייבות — בואו נבנה משהו מדהים ביחד" : "Free consultation, no commitment — let's build something amazing together"}
           </p>
-          <a
-            href={`https://wa.me/${WHATSAPP}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white text-sky-600 font-black px-8 py-4 rounded-full text-lg hover:scale-105 transition-all shadow-xl"
-          >
-            <MessageCircle size={20} />
-            {isRtl ? "שלח הודעה עכשיו" : "Send a Message Now"}
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={`https://wa.me/${WHATSAPP}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 text-white font-black px-10 py-5 rounded-2xl text-lg hover:scale-[1.03] transition-all shadow-2xl shadow-sky-500/25"
+            >
+              <MessageCircle size={22} />
+              {isRtl ? "שלח הודעה עכשיו" : "Send a Message Now"}
+            </a>
+            <a
+              href="tel:+972543495645"
+              className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold px-10 py-5 rounded-2xl text-lg transition-all"
+            >
+              <Phone size={20} />
+              054-349-5645
+            </a>
+          </div>
         </div>
       </section>
 
