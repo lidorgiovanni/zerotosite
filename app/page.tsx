@@ -11,7 +11,7 @@ import Contact from "@/components/Contact";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import he from "@/messages/he.json";
 import en from "@/messages/en.json";
-import { MessageCircle, Phone, Mail, Instagram, Facebook, Linkedin } from "lucide-react";
+import { MessageCircle, Phone, Mail, Globe } from "lucide-react";
 
 const WHATSAPP = "972543495645";
 
@@ -71,9 +71,9 @@ export default function Home() {
               </p>
               <div className="flex gap-3 mt-5">
                 {[
-                  { icon: Instagram, href: "#" },
-                  { icon: Facebook, href: "#" },
-                  { icon: Linkedin, href: "#" },
+                  { icon: Globe, href: "#" },
+                  { icon: Phone, href: "tel:+972543495645" },
+                  { icon: Mail, href: "mailto:lidor@zerotosite.co.il" },
                 ].map(({ icon: Icon, href }, i) => (
                   <a
                     key={i}
