@@ -58,7 +58,11 @@ export default function Navbar({ lang, t, onLangChange }: NavbarProps) {
           </a>
           <button
             onClick={() => onLangChange(lang === "he" ? "en" : "he")}
-            className={`text-sm font-semibold transition-colors hover:text-sky-400 ${scrolled ? "text-slate-500" : "text-white/70"}`}
+            className={`text-sm font-semibold transition-colors hover:text-sky-400 border rounded-lg px-2.5 py-1 ${
+              scrolled
+                ? "text-slate-500 border-slate-200 hover:border-sky-300"
+                : "text-white/70 border-white/20 hover:border-sky-400/50"
+            }`}
           >
             {lang === "he" ? "EN" : "עב"}
           </button>
@@ -66,13 +70,16 @@ export default function Navbar({ lang, t, onLangChange }: NavbarProps) {
             href={`https://wa.me/${WHATSAPP}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-sky-500 hover:bg-sky-400 text-white text-sm font-bold px-5 py-2 rounded-full transition-all hover:scale-105 shadow-lg shadow-sky-500/20"
+            className="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-sm font-bold px-5 py-2 rounded-full transition-all hover:scale-105 shadow-lg shadow-sky-500/20"
           >
             {t.contact}
           </a>
         </div>
 
-        <button className={`md:hidden transition-colors ${scrolled ? "text-slate-900" : "text-white"}`} onClick={() => setOpen(!open)}>
+        <button
+          className={`md:hidden transition-colors ${scrolled ? "text-slate-900" : "text-white"}`}
+          onClick={() => setOpen(!open)}
+        >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
@@ -86,15 +93,28 @@ export default function Navbar({ lang, t, onLangChange }: NavbarProps) {
             className={`md:hidden bg-white border-b border-slate-100 px-6 py-4 flex flex-col gap-4 ${isRtl ? "text-right" : "text-left"}`}
           >
             {links.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-slate-700 hover:text-sky-500 font-medium transition-colors">
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="text-slate-700 hover:text-sky-500 font-medium transition-colors py-1"
+              >
                 {l.label}
               </a>
             ))}
-            <div className="flex items-center justify-between pt-2 border-t border-slate-100">
-              <button onClick={() => onLangChange(lang === "he" ? "en" : "he")} className="text-slate-500 hover:text-sky-500 text-sm font-semibold">
+            <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+              <button
+                onClick={() => { onLangChange(lang === "he" ? "en" : "he"); setOpen(false); }}
+                className="text-slate-500 hover:text-sky-500 text-sm font-semibold"
+              >
                 {lang === "he" ? "Switch to English" : "עבור לעברית"}
               </button>
-              <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer" className="bg-sky-500 text-white text-sm font-bold px-4 py-2 rounded-full">
+              <a
+                href={`https://wa.me/${WHATSAPP}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-sky-500 to-blue-600 text-white text-sm font-bold px-4 py-2 rounded-full"
+              >
                 {t.contact}
               </a>
             </div>

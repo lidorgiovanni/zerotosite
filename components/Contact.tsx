@@ -28,9 +28,18 @@ export default function Contact({ lang, t }: ContactProps) {
   ];
 
   return (
-    <section id="contact" className={`py-24 bg-slate-50 ${isRtl ? "rtl" : "ltr"}`}>
+    <section id="contact" className={`py-24 bg-white ${isRtl ? "rtl" : "ltr"}`}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 bg-green-50 border border-green-100 text-green-600 text-sm font-semibold px-4 py-1.5 rounded-full mb-4"
+          >
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            {isRtl ? "זמינים עכשיו" : "Available Now"}
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,23 +62,23 @@ export default function Contact({ lang, t }: ContactProps) {
               href={`https://wa.me/${WHATSAPP}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-3 bg-green-500 hover:bg-green-400 text-white font-bold py-5 rounded-2xl transition-all hover:scale-[1.02] mb-8 text-lg shadow-lg shadow-green-500/20"
+              className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-bold py-5 rounded-2xl transition-all hover:scale-[1.02] mb-8 text-lg shadow-xl shadow-green-500/20"
             >
               <MessageCircle size={24} />
               {t.whatsapp}
             </a>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {info.map((item, i) => {
                 const Icon = item.icon;
                 return (
-                  <div key={i} className="flex items-center gap-4 p-4 bg-white rounded-xl border border-slate-100">
-                    <div className="w-10 h-10 bg-sky-50 rounded-lg flex items-center justify-center">
-                      <Icon size={18} className="text-sky-500" />
+                  <div key={i} className="flex items-center gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-sky-200 hover:bg-sky-50/30 transition-all">
+                    <div className="w-10 h-10 bg-gradient-to-br from-sky-400 to-blue-500 rounded-lg flex items-center justify-center shadow-md flex-shrink-0">
+                      <Icon size={17} className="text-white" />
                     </div>
                     <div>
                       <div className="text-xs text-slate-400 font-medium">{item.label}</div>
-                      <div className="text-slate-800 font-semibold">{item.value}</div>
+                      <div className="text-slate-800 font-semibold text-sm">{item.value}</div>
                     </div>
                   </div>
                 );
@@ -82,7 +91,7 @@ export default function Contact({ lang, t }: ContactProps) {
             initial={{ opacity: 0, x: isRtl ? -20 : 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100"
+            className="bg-slate-50 rounded-2xl p-8 border border-slate-100"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="flex-1 h-px bg-slate-200" />
@@ -105,24 +114,24 @@ export default function Contact({ lang, t }: ContactProps) {
                 name="name"
                 required
                 placeholder={t.name}
-                className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/10 transition-all"
+                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/10 transition-all"
               />
               <input
                 name="email"
                 type="email"
                 placeholder={t.email}
-                className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/10 transition-all"
+                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/10 transition-all"
               />
               <textarea
                 name="message"
                 required
                 rows={4}
                 placeholder={t.message}
-                className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/10 transition-all resize-none"
+                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/10 transition-all resize-none"
               />
               <button
                 type="submit"
-                className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-xl transition-all hover:scale-[1.02] shadow-lg"
+                className="w-full bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white font-bold py-4 rounded-xl transition-all hover:scale-[1.02] shadow-lg"
               >
                 {t.send}
               </button>
