@@ -1,79 +1,93 @@
 "use client";
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { Globe, ShoppingCart, Zap, Palette, Search, Shield, Share2, Code, ArrowUpRight } from "lucide-react";
+import { Globe, ShoppingCart, Zap, Palette, Search, Shield, Share2, Code } from "lucide-react";
 
 interface ServicesProps {
   lang: "he" | "en";
   t: { title: string; subtitle: string; items: { title: string; desc: string }[] };
 }
 
-const cards = [
-  { icon: Globe, gradient: "from-sky-500 to-blue-600", glow: "rgba(14,165,233,0.25)", span: "lg:col-span-2" },
-  { icon: ShoppingCart, gradient: "from-violet-500 to-purple-600", glow: "rgba(139,92,246,0.25)", span: "" },
-  { icon: Zap, gradient: "from-amber-500 to-orange-500", glow: "rgba(245,158,11,0.2)", span: "" },
-  { icon: Palette, gradient: "from-pink-500 to-rose-500", glow: "rgba(236,72,153,0.2)", span: "" },
-  { icon: Search, gradient: "from-emerald-500 to-teal-500", glow: "rgba(16,185,129,0.2)", span: "lg:col-span-2" },
-  { icon: Shield, gradient: "from-sky-400 to-cyan-500", glow: "rgba(6,182,212,0.2)", span: "" },
-  { icon: Share2, gradient: "from-indigo-500 to-blue-500", glow: "rgba(99,102,241,0.2)", span: "" },
-  { icon: Code, gradient: "from-fuchsia-500 to-violet-500", glow: "rgba(217,70,239,0.2)", span: "" },
+const meta = [
+  { icon: Globe,        color: "#0ea5e9", num: "01" },
+  { icon: ShoppingCart, color: "#8b5cf6", num: "02" },
+  { icon: Zap,          color: "#f59e0b", num: "03" },
+  { icon: Palette,      color: "#ec4899", num: "04" },
+  { icon: Search,       color: "#10b981", num: "05" },
+  { icon: Shield,       color: "#06b6d4", num: "06" },
+  { icon: Share2,       color: "#6366f1", num: "07" },
+  { icon: Code,         color: "#d946ef", num: "08" },
 ];
+
+function ServiceCard({ item, m, isRtl, i }: { item: { title: string; desc: string }; m: typeof meta[0]; isRtl: boolean; i: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const Icon = m.icon;
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    ref.current!.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    ref.current!.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  };
+
+  return (
+    <motion.div ref={ref}
+      initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07, duration: 0.5 }}
+      onMouseMove={handleMouseMove}
+      className="spotlight card-gradient-border rounded-3xl p-7 group cursor-default transition-all duration-300 hover:scale-[1.02]"
+    >
+      <div className="relative z-10">
+        {/* top row */}
+        <div className="flex items-start justify-between mb-6">
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+            style={{ background: `${m.color}18`, border: `1px solid ${m.color}30` }}>
+            <Icon size={22} style={{ color: m.color }} />
+          </div>
+          <span className="text-4xl font-black tabular-nums" style={{ color: `${m.color}18` }}>{m.num}</span>
+        </div>
+        <h3 className="text-white font-black text-lg mb-2 group-hover:text-sky-300 transition-colors duration-200">{item.title}</h3>
+        <p className="text-slate-500 text-sm leading-relaxed group-hover:text-slate-400 transition-colors duration-200">{item.desc}</p>
+
+        {/* bottom line */}
+        <div className="mt-5 h-px w-0 group-hover:w-full transition-all duration-500 rounded-full"
+          style={{ background: `linear-gradient(90deg, ${m.color}, transparent)` }} />
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Services({ lang, t }: ServicesProps) {
   const isRtl = lang === "he";
 
   return (
-    <section id="services" className={`py-28 bg-white ${isRtl ? "rtl" : "ltr"}`}>
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="services" className={`py-28 bg-[#030712] relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(14,165,233,0.07),transparent)]" />
+      <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px,transparent 1px)", backgroundSize: "28px 28px" }} />
 
-        {/* header */}
+      <div className="relative max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-sky-500 font-bold text-sm uppercase tracking-[0.2em] mb-4">
-            {isRtl ? "מה אנחנו עושים" : "What We Do"}
+            className="text-sky-400 font-bold text-sm uppercase tracking-[0.25em] mb-4">
+            {isRtl ? "מה אני בונה" : "What I Build"}
           </motion.p>
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-slate-900 mb-5 leading-tight">
+            className="text-4xl md:text-6xl font-black text-white mb-5 leading-tight">
             {t.title}
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-slate-500 text-lg max-w-xl mx-auto">
+            className="text-slate-500 text-xl max-w-xl mx-auto">
             {t.subtitle}
           </motion.p>
         </div>
 
-        {/* bento grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {t.items.map((item, i) => {
-            const c = cards[i];
-            const Icon = c.icon;
-            const isFeatured = i === 0 || i === 4;
-            return (
-              <motion.div key={i}
-                initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-                className={`group relative rounded-3xl overflow-hidden cursor-default ${c.span} ${isFeatured ? "min-h-[220px]" : "min-h-[180px]"}`}
-                style={{ background: "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)", border: "1px solid #e2e8f0" }}
-              >
-                {/* hover glow */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
-                  style={{ background: `radial-gradient(circle at 30% 30%, ${c.glow}, transparent 70%)` }} />
-
-                <div className="relative z-10 p-7 h-full flex flex-col justify-between">
-                  <div>
-                    <div className={`w-12 h-12 bg-gradient-to-br ${c.gradient} rounded-2xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                      <Icon size={22} className="text-white" />
-                    </div>
-                    <h3 className={`font-black text-slate-900 mb-2 ${isFeatured ? "text-xl" : "text-base"}`}>{item.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
-                  <div className={`mt-4 flex items-center gap-1 text-sm font-bold bg-gradient-to-r ${c.gradient} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0`}>
-                    {isRtl ? "קרא עוד" : "Learn more"} <ArrowUpRight size={14} className={`bg-gradient-to-r ${c.gradient} bg-clip-text`} />
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {t.items.map((item, i) => (
+            <ServiceCard key={i} item={item} m={meta[i]} isRtl={isRtl} i={i} />
+          ))}
         </div>
       </div>
+
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 }
