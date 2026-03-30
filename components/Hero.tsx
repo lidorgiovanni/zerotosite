@@ -10,8 +10,8 @@ interface HeroProps {
   t: { badge: string; title: string; titleHighlight: string; subtitle: string; cta: string; ctaSecondary: string };
 }
 
-const wordsHe = ["להרוויח כסף", "להביא לקוחות", "לעבוד בשבילך", "לגדול איתך"];
-const wordsEn = ["make money", "bring clients", "work for you", "grow with you"];
+const wordsHe = ["להרוויח כסף", "להביא לקוחות", "דף נחיתה מנצח", "לגדול איתך", "אתר תדמית מושלם"];
+const wordsEn = ["make money", "bring clients", "a winning landing page", "grow with you", "a stunning business site"];
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [n, setN] = useState(0);

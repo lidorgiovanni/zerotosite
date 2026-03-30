@@ -28,6 +28,7 @@ export default function Navbar({ lang, t, onLangChange }: NavbarProps) {
   }, []);
 
   const links = [
+    { label: isRtl ? "דפי נחיתה" : "Landing Pages", href: "#services" },
     { label: t.services, href: "#services" },
     { label: t.portfolio, href: "#portfolio" },
     { label: t.pricing, href: "#pricing" },
