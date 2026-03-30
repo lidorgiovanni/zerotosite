@@ -52,7 +52,6 @@ export default function Pricing({ lang, t }: PricingProps) {
                     </div>
                   </>
                 )}
-
                 <div className="p-8 flex flex-col flex-1">
                   <div className="mb-6">
                     <h3 className={`text-xl font-black mb-1.5 ${isPopular ? "text-white" : "text-slate-900"}`}>{plan.name}</h3>

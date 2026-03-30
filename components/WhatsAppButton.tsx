@@ -24,7 +24,7 @@ const quickRepliesEn = [
 ];
 
 export default function WhatsAppButton({ lang }: WhatsAppButtonProps) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const isRtl = lang === "he";
   const quickReplies = isRtl ? quickRepliesHe : quickRepliesEn;
 

@@ -167,128 +167,205 @@ export default function Hero({ lang, t }: HeroProps) {
             </motion.div>
           </div>
 
-          {/* MOCKUP */}
-          <motion.div initial={{ opacity: 0, x: isRtl ? -50 : 50, y: 10 }} animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          {/* MOCKUP — animated live website */}
+          <motion.div initial={{ opacity: 0, x: isRtl ? -60 : 60, y: 16 }} animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="hidden lg:block relative">
 
-            <div className="absolute inset-[-80px] bg-sky-500/8 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute inset-[-40px] bg-violet-500/6 rounded-full blur-2xl pointer-events-none" />
+            {/* glows */}
+            <div className="absolute inset-[-100px] bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute inset-[-60px] bg-violet-500/8 rounded-full blur-2xl pointer-events-none" />
 
-            {/* browser */}
-            <div className="relative bg-[#0d1117] border border-white/10 rounded-3xl overflow-hidden shadow-[0_50px_140px_rgba(0,0,0,0.7)] animate-float">
-              {/* titlebar */}
+            {/* browser shell */}
+            <div className="relative bg-[#0d1117] border border-white/12 rounded-3xl overflow-hidden shadow-[0_60px_160px_rgba(0,0,0,0.8)] animate-float">
+
+              {/* ── TITLE BAR ── */}
               <div className="flex items-center gap-2 px-5 py-3.5 bg-[#161b22] border-b border-white/6">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
                   <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
                   <div className="w-3 h-3 rounded-full bg-[#28c840]" />
                 </div>
-                <div className="flex-1 mx-3 bg-[#21262d] rounded-lg px-3 py-1.5 text-xs text-slate-500 flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 flex-shrink-0 animate-glow-pulse" />
-                  zerotosite.co.il
-                </div>
-                <div className="flex items-center gap-1 text-emerald-400 text-[10px] font-bold">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  Live
+                <div className="flex-1 mx-3 bg-[#21262d] rounded-lg px-3 py-1.5 text-xs text-slate-400 flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 flex-shrink-0 animate-glow-pulse" />
+                  <span className="text-slate-400">zerotosite.co.il</span>
+                  <span className="ms-auto text-emerald-400 font-bold text-[10px]">● Live</span>
                 </div>
               </div>
 
-              <div className="p-5 space-y-3">
-                {/* hero strip */}
-                <div className="relative bg-gradient-to-br from-sky-600/22 via-blue-600/10 to-violet-600/15 rounded-2xl p-5 border border-white/6 overflow-hidden">
-                  <div className="absolute -top-6 -right-6 w-32 h-32 bg-sky-400/12 rounded-full blur-2xl" />
-                  <div className="flex items-center justify-between mb-4 opacity-50">
-                    <div className="h-2 w-16 bg-white/60 rounded-full" />
-                    <div className="flex gap-2">
-                      {[8, 8, 8].map((w, i) => <div key={i} className="h-1.5 bg-white/20 rounded-full" style={{ width: `${w * 4}px` }} />)}
-                    </div>
+              {/* ── PAGE CONTENT ── */}
+              <div className="bg-white overflow-hidden" style={{ height: "420px" }}>
+
+                {/* fake navbar */}
+                <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.4 }}
+                  className="flex items-center justify-between px-6 py-3 border-b border-slate-100 bg-white/95 backdrop-blur-sm">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-5 h-5 rounded-md bg-sky-500" />
+                    <div className="h-2.5 w-20 bg-slate-800 rounded-full" />
                   </div>
-                  <div className="h-2 w-20 bg-sky-400/70 rounded-full mb-2.5" />
-                  <div className="h-5 w-52 bg-white/85 rounded-full mb-1.5" />
-                  <div className="h-2.5 w-40 bg-white/35 rounded-full mb-1" />
-                  <div className="h-2 w-48 bg-slate-400/20 rounded-full mb-4" />
+                  <div className="flex gap-4">
+                    {[14, 16, 12, 18].map((w, i) => (
+                      <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 + i * 0.08 }}
+                        className="h-1.5 bg-slate-300 rounded-full" style={{ width: `${w * 3}px` }} />
+                    ))}
+                  </div>
+                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2 }}
+                    className="h-6 w-20 bg-sky-500 rounded-full" />
+                </motion.div>
+
+                {/* hero section of the fake site */}
+                <div className="relative bg-gradient-to-br from-[#030712] via-[#0a1628] to-[#0d1117] px-6 pt-6 pb-5 overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(14,165,233,0.2),transparent)]" />
+                  <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px,transparent 1px)", backgroundSize: "20px 20px" }} />
+
+                  {/* badge */}
+                  <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0 }}
+                    className="inline-flex items-center gap-1.5 bg-sky-500/15 border border-sky-500/25 rounded-full px-3 py-1 mb-3">
+                    <div className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
+                    <div className="h-1.5 w-24 bg-sky-400/60 rounded-full" />
+                  </motion.div>
+
+                  {/* headline lines — typing effect */}
+                  <div className="mb-3 space-y-1.5">
+                    <motion.div initial={{ width: 0 }} animate={{ width: "85%" }} transition={{ delay: 1.1, duration: 0.6, ease: "easeOut" }}
+                      className="h-4 bg-white/90 rounded-full overflow-hidden" />
+                    <motion.div initial={{ width: 0 }} animate={{ width: "65%" }} transition={{ delay: 1.4, duration: 0.5, ease: "easeOut" }}
+                      className="h-4 bg-gradient-to-r from-sky-400 to-violet-400 rounded-full overflow-hidden" />
+                  </div>
+
+                  {/* subtitle */}
+                  <div className="space-y-1 mb-4">
+                    {["90%", "75%", "55%"].map((w, i) => (
+                      <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.7 + i * 0.1 }}
+                        className="h-1.5 bg-slate-500/40 rounded-full" style={{ width: w }} />
+                    ))}
+                  </div>
+
+                  {/* CTA buttons */}
                   <div className="flex gap-2">
-                    <div className="h-8 w-28 bg-sky-500 rounded-xl shadow-lg shadow-sky-500/35" />
-                    <div className="h-8 w-20 bg-white/8 border border-white/12 rounded-xl" />
+                    <motion.div initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 2.0, type: "spring", stiffness: 200 }}
+                      className="h-7 w-28 bg-sky-500 rounded-xl shadow-lg shadow-sky-500/40" />
+                    <motion.div initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 2.15, type: "spring", stiffness: 200 }}
+                      className="h-7 w-22 bg-white/8 border border-white/15 rounded-xl" />
                   </div>
                 </div>
 
-                {/* 3 cards */}
-                <div className="grid grid-cols-3 gap-2">
-                  {[
-                    { g: "from-sky-500/15 to-blue-500/8", c: "#0ea5e9" },
-                    { g: "from-violet-500/15 to-purple-500/8", c: "#8b5cf6" },
-                    { g: "from-emerald-500/15 to-teal-500/8", c: "#10b981" },
-                  ].map((x, i) => (
-                    <div key={i} className={`bg-gradient-to-br ${x.g} rounded-xl p-3 border border-white/5`}>
-                      <div className="w-5 h-5 rounded-lg mb-2" style={{ background: `${x.c}28` }} />
-                      <div className="h-1.5 w-full bg-white/12 rounded-full mb-1" />
-                      <div className="h-1.5 w-3/4 bg-white/7 rounded-full" />
-                    </div>
-                  ))}
-                </div>
-
-                {/* chart */}
-                <div className="bg-white/4 border border-white/6 rounded-xl p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="text-[10px] text-slate-500 font-medium">{isRtl ? "מבקרים החודש" : "Monthly Visitors"}</div>
-                    <div className="text-emerald-400 text-[10px] font-black">↑ +34%</div>
-                  </div>
-                  <div className="flex items-end gap-1 h-12">
-                    {[22, 38, 30, 55, 42, 68, 50, 76, 58, 85, 70, 100].map((h, i) => (
-                      <div key={i} className="flex-1 rounded-t-sm"
-                        style={{ height: `${h}%`, background: `linear-gradient(to top, rgba(14,165,233,0.75), rgba(14,165,233,0.18))` }} />
+                {/* services section */}
+                <div className="px-6 py-4 bg-white">
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.3 }}
+                    className="h-2 w-24 bg-sky-500/30 rounded-full mb-3" />
+                  <div className="grid grid-cols-3 gap-2.5">
+                    {[
+                      { color: "#0ea5e9", delay: 2.4 },
+                      { color: "#8b5cf6", delay: 2.55 },
+                      { color: "#10b981", delay: 2.7 },
+                    ].map((card, i) => (
+                      <motion.div key={i}
+                        initial={{ opacity: 0, y: 12, scale: 0.92 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ delay: card.delay, type: "spring", stiffness: 180 }}
+                        className="rounded-xl p-3 border"
+                        style={{ background: `${card.color}08`, borderColor: `${card.color}20` }}>
+                        <div className="w-6 h-6 rounded-lg mb-2" style={{ background: `${card.color}25` }} />
+                        <div className="h-1.5 w-full rounded-full mb-1" style={{ background: `${card.color}30` }} />
+                        <div className="h-1.5 w-3/4 rounded-full" style={{ background: `${card.color}18` }} />
+                      </motion.div>
                     ))}
                   </div>
                 </div>
 
-                {/* scores */}
-                <div className="grid grid-cols-3 gap-2">
-                  {[
-                    { label: "Performance", score: 98, color: "#10b981" },
-                    { label: "SEO", score: 100, color: "#0ea5e9" },
-                    { label: "Best Practices", score: 96, color: "#8b5cf6" },
-                  ].map(s => (
-                    <div key={s.label} className="bg-white/4 border border-white/6 rounded-xl p-2.5 text-center">
-                      <div className="text-lg font-black" style={{ color: s.color }}>{s.score}</div>
-                      <div className="text-[8px] text-slate-600 mt-0.5 leading-tight">{s.label}</div>
-                    </div>
-                  ))}
+                {/* stats bar */}
+                <div className="px-6 pb-4 bg-white">
+                  <div className="flex gap-3">
+                    {[
+                      { n: "50+", l: isRtl ? "פרויקטים" : "Projects", c: "#0ea5e9", delay: 2.85 },
+                      { n: "100%", l: isRtl ? "שביעות רצון" : "Satisfaction", c: "#10b981", delay: 2.95 },
+                      { n: "7d", l: isRtl ? "מסירה" : "Delivery", c: "#8b5cf6", delay: 3.05 },
+                    ].map((s, i) => (
+                      <motion.div key={i}
+                        initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: s.delay }}
+                        className="flex-1 rounded-xl p-2.5 text-center border"
+                        style={{ background: `${s.c}06`, borderColor: `${s.c}15` }}>
+                        <div className="text-sm font-black" style={{ color: s.c }}>{s.n}</div>
+                        <div className="text-[9px] text-slate-400 mt-0.5">{s.l}</div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
+
+                {/* animated cursor */}
+                <motion.div
+                  animate={{
+                    x: [120, 200, 160, 240, 180],
+                    y: [80, 120, 200, 160, 100],
+                  }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+                  className="absolute pointer-events-none z-20"
+                  style={{ top: 0, left: 0 }}>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 2L16 10L10 11L7 17L4 2Z" fill="white" stroke="#0ea5e9" strokeWidth="1.5" strokeLinejoin="round" />
+                  </svg>
+                </motion.div>
+
+                {/* build progress bar at top */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 0.9, duration: 2.5, ease: "easeInOut" }}
+                  style={{ originX: 0 }}
+                  className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-sky-500 via-violet-500 to-emerald-500 z-30"
+                />
               </div>
             </div>
 
-            {/* floating: orders */}
-            <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-6 -left-10 bg-white rounded-2xl px-4 py-3.5 shadow-2xl flex items-center gap-3 border border-slate-100">
-              <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30">
-                <TrendingUp size={18} className="text-white" />
-              </div>
-              <div>
-                <div className="text-[11px] text-slate-400 font-medium">{isRtl ? "הזמנות אונליין" : "Online orders"}</div>
-                <div className="text-emerald-600 font-black text-xl leading-none">+40%</div>
-              </div>
+            {/* floating: new order notification */}
+            <motion.div
+              initial={{ opacity: 0, x: 40, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ delay: 3.2, type: "spring", stiffness: 160 }}
+              className="absolute -bottom-5 -left-10">
+              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 3.5 }}
+                className="bg-white rounded-2xl px-4 py-3 shadow-2xl flex items-center gap-3 border border-slate-100">
+                <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30">
+                  <TrendingUp size={18} className="text-white" />
+                </div>
+                <div>
+                  <div className="text-[11px] text-slate-400 font-medium">{isRtl ? "הזמנה חדשה! 🎉" : "New order! 🎉"}</div>
+                  <div className="text-emerald-600 font-black text-lg leading-none">+₪850</div>
+                </div>
+              </motion.div>
             </motion.div>
 
-            {/* floating: delivery */}
-            <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              className="absolute -top-5 -right-8 bg-sky-500 rounded-2xl px-4 py-3 shadow-2xl shadow-sky-500/40 flex items-center gap-2.5">
-              <Zap size={16} className="text-white fill-white flex-shrink-0" />
-              <div>
-                <div className="text-white font-black text-sm leading-none">{isRtl ? "7 ימים" : "7 days"}</div>
-                <div className="text-sky-100 text-[10px] mt-0.5">{isRtl ? "מסירה מובטחת" : "guaranteed"}</div>
-              </div>
+            {/* floating: site is live */}
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 2.8, type: "spring", stiffness: 160 }}
+              className="absolute -top-5 -right-8">
+              <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+                className="bg-sky-500 rounded-2xl px-4 py-3 shadow-2xl shadow-sky-500/40 flex items-center gap-2.5">
+                <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                <div>
+                  <div className="text-white font-black text-sm leading-none">{isRtl ? "האתר חי! 🚀" : "Site is Live! 🚀"}</div>
+                  <div className="text-sky-100 text-[10px] mt-0.5">{isRtl ? "תוך 7 ימים" : "In 7 days"}</div>
+                </div>
+              </motion.div>
             </motion.div>
 
             {/* floating: rating */}
-            <motion.div animate={{ y: [0, -7, 0] }} transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
-              className="absolute top-[38%] -right-12 bg-white rounded-2xl px-3.5 py-3 shadow-2xl border border-slate-100">
-              <div className="flex gap-0.5 mb-1">
-                {Array(5).fill(0).map((_, i) => <Star key={i} size={11} className="text-amber-400 fill-amber-400" />)}
-              </div>
-              <div className="text-slate-800 font-black text-sm">5.0</div>
-              <div className="text-slate-400 text-[10px]">{isRtl ? "50+ ביקורות" : "50+ reviews"}</div>
+            <motion.div
+              initial={{ opacity: 0, x: 20, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ delay: 3.5, type: "spring", stiffness: 160 }}
+              className="absolute top-[40%] -right-12">
+              <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+                className="bg-white rounded-2xl px-3.5 py-3 shadow-2xl border border-slate-100">
+                <div className="flex gap-0.5 mb-1">
+                  {Array(5).fill(0).map((_, i) => <Star key={i} size={11} className="text-amber-400 fill-amber-400" />)}
+                </div>
+                <div className="text-slate-800 font-black text-sm">5.0</div>
+                <div className="text-slate-400 text-[10px]">{isRtl ? "לקוח מרוצה" : "Happy client"}</div>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
