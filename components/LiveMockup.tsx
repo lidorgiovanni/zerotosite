@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Star, TrendingUp, ShoppingCart, Phone } from "lucide-react";
+import { Star, TrendingUp, Phone } from "lucide-react";
 
 interface LiveMockupProps { isRtl: boolean; }
 
@@ -13,7 +13,7 @@ const fade = (delay: number, y = 12) => ({
 const slideIn = (delay: number) => ({
   initial: { opacity: 0, scaleX: 0 },
   animate: { opacity: 1, scaleX: 1 },
-  transition: { delay, duration: 0.6, ease: "easeOut" },
+  transition: { delay, duration: 0.6, ease: "easeOut" as const },
 });
 
 export default function LiveMockup({ isRtl }: LiveMockupProps) {
