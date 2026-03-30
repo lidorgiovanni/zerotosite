@@ -27,8 +27,8 @@ export default function Process({ lang }: ProcessProps) {
   const Arrow = isRtl ? ArrowLeft : ArrowRight;
 
   return (
-    <section className={`py-28 bg-white relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(14,165,233,0.03),transparent)]" />
+    <section className={`py-28 bg-[#fafaf8] relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(139,92,246,0.04),transparent)]" />
 
       <div className="relative max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
@@ -57,7 +57,7 @@ export default function Process({ lang }: ProcessProps) {
               <motion.div key={i}
                 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15, duration: 0.6 }}
                 className="relative group">
-                <div className="h-full bg-slate-50 hover:bg-white border border-slate-100 hover:border-slate-200 hover:shadow-2xl hover:shadow-slate-200/60 rounded-3xl p-8 transition-all duration-300">
+                <div className="h-full bg-white hover:bg-white border border-slate-200 hover:border-violet-200 hover:shadow-2xl hover:shadow-violet-100/60 rounded-3xl p-8 transition-all duration-300">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="relative w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
                       style={{ background: `${step.color}12`, border: `1.5px solid ${step.color}28` }}>

@@ -106,7 +106,7 @@ export default function FAQ({ lang }: FAQProps) {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#030712] to-transparent pointer-events-none" />
     </section>
   );
 }

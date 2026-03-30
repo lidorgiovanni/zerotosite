@@ -79,21 +79,23 @@ export default function Portfolio({ lang }: PortfolioProps) {
   const filtered = active === "all" ? projects : projects.filter(p => p.categoryKey === active);
 
   return (
-    <section id="portfolio" className={`py-28 bg-white relative ${isRtl ? "rtl" : "ltr"}`}>
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="portfolio" className={`py-28 bg-[#030712] relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(14,165,233,0.08),transparent)]" />
+      <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px,transparent 1px)", backgroundSize: "28px 28px" }} />
+      <div className="relative max-w-6xl mx-auto px-6">
 
         {/* header */}
         <div className="text-center mb-14">
           <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-sky-500 font-bold text-sm uppercase tracking-[0.25em] mb-4">
+            className="text-sky-400 font-bold text-sm uppercase tracking-[0.25em] mb-4">
             {isRtl ? "עבודות נבחרות" : "Selected Work"}
           </motion.p>
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-slate-900 mb-4 leading-tight">
+            className="text-4xl md:text-6xl font-black text-white mb-4 leading-tight">
             {isRtl ? "פרויקטים שעשו הבדל" : "Projects That Made a Difference"}
           </motion.h2>
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-slate-500 text-xl">
+            className="text-slate-400 text-xl">
             {isRtl ? "כל פרויקט עם תוצאות מדידות ואמיתיות" : "Every project with real, measurable results"}
           </motion.p>
         </div>
@@ -104,8 +106,8 @@ export default function Portfolio({ lang }: PortfolioProps) {
             <button key={c.key} onClick={() => setActive(c.key)}
               className={`px-5 py-2.5 rounded-2xl text-sm font-bold transition-all duration-200 ${
                 active === c.key
-                  ? "bg-slate-900 text-white shadow-lg scale-[1.03]"
-                  : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-800 border border-slate-100"
+                  ? "bg-sky-500 text-white shadow-lg scale-[1.03]"
+                  : "bg-white/8 text-slate-400 hover:bg-white/15 hover:text-white border border-white/10"
               }`}>
               {isRtl ? c.he : c.en}
             </button>
@@ -170,17 +172,17 @@ export default function Portfolio({ lang }: PortfolioProps) {
         {/* CTA */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-slate-50 border border-slate-100 rounded-3xl px-8 py-6">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/6 border border-white/10 rounded-3xl px-8 py-6">
             <div className={isRtl ? "text-right" : "text-left"}>
-              <div className="font-black text-slate-900 text-lg">
+              <div className="font-black text-white text-lg">
                 {isRtl ? "רוצה שהפרויקט שלך יהיה הבא?" : "Want your project to be next?"}
               </div>
-              <div className="text-slate-500 text-sm mt-0.5">
+              <div className="text-slate-400 text-sm mt-0.5">
                 {isRtl ? "שיחת ייעוץ חינמית — ללא התחייבות" : "Free consultation — no commitment"}
               </div>
             </div>
             <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer"
-              className="btn-beam flex-shrink-0 inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-black px-6 py-3.5 rounded-2xl transition-all hover:scale-[1.03] shadow-xl whitespace-nowrap">
+              className="btn-beam flex-shrink-0 inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-400 text-white font-black px-6 py-3.5 rounded-2xl transition-all hover:scale-[1.03] shadow-xl shadow-sky-500/25 whitespace-nowrap">
               <MessageCircle size={17} />
               {isRtl ? "בואו נדבר" : "Let's Talk"}
             </a>

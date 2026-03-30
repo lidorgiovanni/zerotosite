@@ -14,8 +14,8 @@ export default function Pricing({ lang, t }: PricingProps) {
   const Arrow = isRtl ? ArrowLeft : ArrowRight;
 
   return (
-    <section id="pricing" className={`py-28 bg-white relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(14,165,233,0.04),transparent)]" />
+    <section id="pricing" className={`py-28 bg-[#f8faff] relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(14,165,233,0.07),transparent)]" />
 
       <div className="relative max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
@@ -39,7 +39,7 @@ export default function Pricing({ lang, t }: PricingProps) {
                 className={`relative rounded-3xl flex flex-col transition-all duration-300 ${
                   isPopular
                     ? "bg-[#030712] shadow-2xl scale-[1.03] z-10"
-                    : "bg-slate-50 border border-slate-100 hover:border-slate-200 hover:shadow-xl"
+                    : "bg-white border border-slate-200 hover:border-sky-200 hover:shadow-xl shadow-sky-50"
                 }`}
                 style={isPopular ? { boxShadow: "0 0 0 1px rgba(14,165,233,0.4), 0 40px 100px rgba(14,165,233,0.2)" } : {}}>
 
@@ -100,7 +100,7 @@ export default function Pricing({ lang, t }: PricingProps) {
 
         {/* guarantee strip */}
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="mt-12 bg-slate-50 border border-slate-100 rounded-3xl p-6">
+          className="mt-12 bg-white border border-sky-100 rounded-3xl p-6">
           <div className={`flex flex-col md:flex-row items-center gap-6 ${isRtl ? "text-right" : "text-left"}`}>
             <div className="text-4xl flex-shrink-0">🛡️</div>
             <div className="flex-1">

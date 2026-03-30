@@ -30,8 +30,8 @@ export default function Results({ lang }: ResultsProps) {
   const inView = useInView(ref, { once: true });
 
   return (
-    <section className={`py-28 bg-white relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(14,165,233,0.03),transparent)]" />
+    <section className={`py-28 bg-[#f8faff] relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(14,165,233,0.06),transparent)]" />
 
       <div className="relative max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
@@ -55,7 +55,7 @@ export default function Results({ lang }: ResultsProps) {
             return (
               <motion.div key={i}
                 initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="group relative bg-slate-50 hover:bg-white border border-slate-100 hover:border-slate-200 hover:shadow-2xl hover:shadow-slate-200/60 rounded-3xl p-7 transition-all duration-400 overflow-hidden">
+                className="group relative bg-white hover:bg-white border border-slate-200 hover:border-slate-300 hover:shadow-2xl hover:shadow-sky-100/80 rounded-3xl p-7 transition-all duration-400 overflow-hidden">
 
                 {/* bg glow on hover */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"

@@ -39,8 +39,8 @@ export default function About({ lang }: AboutProps) {
   const timeline = isRtl ? timelineHe : timelineEn;
 
   return (
-    <section className={`py-28 bg-white relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(14,165,233,0.03),transparent)]" />
+    <section className={`py-28 bg-[#f0fdf8] relative overflow-hidden ${isRtl ? "rtl" : "ltr"}`}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(16,185,129,0.06),transparent)]" />
 
       <div className="relative max-w-6xl mx-auto px-6">
 
@@ -110,7 +110,7 @@ export default function About({ lang }: AboutProps) {
               </div>
               <div className="flex flex-wrap gap-2">
                 {techStack.map(tech => (
-                  <span key={tech} className="bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold px-3 py-1.5 rounded-full hover:border-sky-300 hover:text-sky-600 transition-colors">
+                  <span key={tech} className="bg-white border border-emerald-100 text-slate-600 text-xs font-semibold px-3 py-1.5 rounded-full hover:border-emerald-400 hover:text-emerald-700 transition-colors">
                     {tech}
                   </span>
                 ))}
@@ -129,7 +129,7 @@ export default function About({ lang }: AboutProps) {
                 return (
                   <motion.div key={i}
                     initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                    className="bg-slate-50 border border-slate-100 rounded-2xl p-5 hover:border-sky-200 hover:shadow-lg hover:shadow-sky-50 transition-all group">
+                    className="bg-white border border-emerald-100 rounded-2xl p-5 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-50 transition-all group">
                     <div className="w-9 h-9 bg-sky-500/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-sky-500/20 transition-colors">
                       <Icon size={17} className="text-sky-500" />
                     </div>

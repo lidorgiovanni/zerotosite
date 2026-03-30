@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send } from "lucide-react";
 
@@ -24,9 +24,15 @@ const quickRepliesEn = [
 ];
 
 export default function WhatsAppButton({ lang }: WhatsAppButtonProps) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const isRtl = lang === "he";
   const quickReplies = isRtl ? quickRepliesHe : quickRepliesEn;
+
+  // פותח אחרי 5 שניות
+  useEffect(() => {
+    const timer = setTimeout(() => setOpen(true), 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const sendMessage = (msg: string) => {
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
